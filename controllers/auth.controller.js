@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import decodeJwt from "../utils/decodeJwt.js";
 
+const JWT_SECRET = process.env.JWT_SECRET
+
 export const postRegister = async (req, res) => {
     try {
         const { body } = req;
@@ -33,7 +35,7 @@ export const postLogin = async (req, res) => {
 
         if (user) {
             const validPassword = await bcrypt.compare(body.password, user.password);
-            const token         = jwt.sign({ id: user.id, username: user.username, email: user.email }, 'shhhhhhared-secret', { expiresIn: 24600, algorithm: 'HS256' });
+            const token = jwt.sign({ id: user.id, username: user.username, email: user.email }, JWT_SECRET, { expiresIn: 24600, algorithm: 'HS256' });
 
             if (validPassword) {
                 res.json({

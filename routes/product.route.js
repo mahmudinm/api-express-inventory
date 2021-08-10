@@ -8,8 +8,6 @@ import {
 } from "../controllers/product.controller.js";
 import jwtMiddleware from "../middleware/jwt.middleware.js"
 import { validate } from "../validator/product.validator.js";
-import { storage } from "../utils/storageMulter.js";
-import multer from "multer";
 
 const router = express.Router();
 

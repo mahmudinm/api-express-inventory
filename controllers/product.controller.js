@@ -1,5 +1,5 @@
-import Product from "../models/product.model.js";
-import Shop from "../models/shop.model.js";
+import Product from "../models/penjualan.model.js";
+import Shop from "../models/barang.model.js";
 import decodeJwt from "../utils/decodeJwt.js";
 import path from "path";
 import { fileURLToPath } from "url";

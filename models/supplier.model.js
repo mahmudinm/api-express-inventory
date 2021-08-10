@@ -3,21 +3,18 @@ import db from "../config/database.js";
 
 const { DataTypes } = Sequelize;
 
-const Product = db.define('products', {
-    shop_id: {
-        type: DataTypes.INTEGER
-    },
-    name: {
+const Supplier = db.define('supplier', {
+    nama: {
         type: DataTypes.STRING
     },
-    price: {
-        type: DataTypes.DOUBLE
+    no_hp: {
+        type: DataTypes.STRING
     },
-    image: {
+    alamat: {
         type: DataTypes.STRING
     },
 }, {
     freezeTableName: true
 });
 
-export default Product;
+export default Supplier;

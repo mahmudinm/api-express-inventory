@@ -1,10 +1,9 @@
-import Shop from "../models/barang.model.js";
-import decodeJwt from "../utils/decodeJwt.js";
+import Barang from "../models/barang.model.js";
 
 export const index = async (req, res) => {
     try {
-        const shop = await Shop.findAll();
-        res.send(shop);
+        const barang = await Barang.findAll();
+        res.send(barang);
     } catch (error) {
         console.log(error);
     }
@@ -12,63 +11,63 @@ export const index = async (req, res) => {
 
 export const find = async (req, res) => {
     try {
-        const shop = await Shop.findAll({
+        const barang = await Barang.findAll({
             where: {
                 id: req.params.id
             }
         })
-        res.send(shop[0]);
+        res.send(barang[0]);
     } catch (error) {
         console.log(error);
     }
 }
 
-// Create shop baru
+// Create barang baru
 export const store = async (req, res) => {
     try {
         const { body } = req;
         const decoded  = decodeJwt(req.headers.authorization);
         
-        const shop = await Shop.create({
+        const barang = await Barang.create({
             user_id: 1,
             name   : body.name
         });
 
         res.json({
-            "message": "Shop Created",
-            "shop"   : shop.toJSON()
+            "message": "Barang Created",
+            "barang"   : barang.toJSON()
         });
     } catch (err) {
         console.log(err);
     }
 }
 
-// Update shop berdasarkan id
+// Update barang berdasarkan id
 export const update = async (req, res) => {
     try {
-        await Shop.update(req.body, {
+        await Barang.update(req.body, {
             where: {
                 id: req.params.id
             }
         });
         res.json({
-            "message": "Shop Updated"
+            "message": "Barang Updated"
         });
     } catch (err) {
         console.log(err);
     }
 }
 
-// Delete shop berdasarkan id
+// Delete barang berdasarkan id
 export const destroy = async (req, res) => {
     try {
-        await Shop.destroy({
+        await Barang.destroy({
             where: {
                 id: req.params.id
             }
         });
         res.json({
-            "message": "Shop Deleted"
+            "message": "Barang Deleted"
         });
     } catch (err) {
         console.log(err);
