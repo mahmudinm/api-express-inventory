@@ -5,21 +5,16 @@ import helmet from "helmet";
 import Router from "./routes/routes.js";
 import fileUpload from "express-fileupload";
 import bodyParser from "body-parser";
-import path from "path";
-import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+dotenv.config();
 
 
-const app = express();
+const app  = express();
+const port = process.env.PORT || 5000;
 
 // Setting up bodyParser to use json and set it to req.body
 app.use(fileUpload()); 
-// {
-//   useTempFiles: true,
-//   tempFileDir: path.join(__dirname, 'tmp'),
-// }
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -40,7 +35,6 @@ try {
 
 // use router
 app.use(Router);
-
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') { // Send the error rather than to show it on the console
     res.status(401).send(err);
@@ -52,4 +46,4 @@ app.use(function (err, req, res, next) {
 
 
 // listen on port
-app.listen(5000, () => console.log('Server running at http://localhost:5000'));
+app.listen(port, () => console.log('Server running at http://localhost:5000'));
