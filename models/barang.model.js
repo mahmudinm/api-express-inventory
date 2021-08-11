@@ -7,7 +7,7 @@ const Barang = db.define('barang', {
     kode: {
         type: DataTypes.STRING
     },
-    name: {
+    nama: {
         type: DataTypes.STRING
     },
     stock: {
