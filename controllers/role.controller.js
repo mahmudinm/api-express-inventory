@@ -29,13 +29,13 @@ export const store = async (req, res) => {
 
 export const edit = async (req, res) => {
     try {
-        const role = await Role.findAll({
+        const role = await Role.findOne({
             where: {
                 id: req.params.id
             }
         })
 
-        res.send(role[0]);
+        res.send(role);
     } catch (error) {
         console.log(error);
     }

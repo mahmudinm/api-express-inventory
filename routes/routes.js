@@ -4,6 +4,7 @@ import authRoute from "./auth.route.js";
 import barangRoute from "./barang.route.js";
 import roleRoute from "./role.route.js";
 import supplierRoute from "./supplier.route.js";
+import penjualanRoute from "./penjualan.route.js";
 import jwtMiddleware from "../middleware/jwt.middleware.js"
 
 const router = express.Router();
@@ -20,5 +21,6 @@ router.use('/user', userRoute);
 router.use('/role', roleRoute);
 router.use('/barang', barangRoute);
 router.use('/supplier', supplierRoute);
+router.use('/penjualan', penjualanRoute);
 
 export default router;
