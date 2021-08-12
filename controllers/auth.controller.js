@@ -35,7 +35,9 @@ export const postLogin = async (req, res) => {
 
         if (user) {
             const validPassword = await bcrypt.compare(body.password, user.password);
-            const token = jwt.sign({ id: user.id, username: user.username, email: user.email }, 'secccreeet', { expiresIn: 24600, algorithm: 'HS256' });
+            const token = jwt.sign({ id: user.id, username: user.username, email: user.email }, process.env.JWT_SECRET, { expiresIn: 24600, algorithm: 'HS256' });
+            //'098f1j0siaskhqg09kzis'
+            // console.log(process.env.JWT_SECRET);
 
             if (validPassword) {
                 res.json({
@@ -62,6 +64,7 @@ export const getProfile = async (req, res) => {
         const decoded  = decodeJwt(req.headers.authorization);
 
         res.json({
+            // data: "hello"
             data: decoded
         });
     } catch (error) {

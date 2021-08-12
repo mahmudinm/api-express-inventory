@@ -1,7 +1,7 @@
 import jwt from "express-jwt";
 
 const jwtMiddleware = jwt({
-    secret: 'shhhhhhared-secret',
+    secret: process.env.JWT_SECRET,
     algorithms: ['HS256']
 })
 

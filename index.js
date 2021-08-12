@@ -5,9 +5,9 @@ import helmet from "helmet";
 import Router from "./routes/routes.js";
 import fileUpload from "express-fileupload";
 import bodyParser from "body-parser";
-// import dotenv from "dotenv";
+import dotenv from "dotenv";
 
-// dotenv.config();
+dotenv.config();
 
 const app  = express();
 const port = 5000;

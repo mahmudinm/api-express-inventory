@@ -6,7 +6,7 @@ import { Sequelize } from "sequelize";
 export const index = async (req, res) => {
     try {
         const barang = await Barang.findAll();
-        res.send(barang);
+        res.send(barang);                
     } catch (error) {
         console.log(error);
     }
