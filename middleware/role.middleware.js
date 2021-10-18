@@ -1,11 +1,18 @@
-// import jwt from "express-jwt";
+import jwt from "express-jwt";
 
-// const jwtMiddleware = jwt({
-//     secret: 'shhhhhhared-secret',
-//     algorithms: ['HS256']
-// })
+export const isAdmin = (req, res, next) => {
+    jwt({
+        secret: process.env.JWT_SECRET,
+        algorithms: ['HS256']
+    })
 
-// export default jwtMiddleware;
-import express from "express";
+    console.log(req);
 
-// const 
+    if (req.role_id == 1) {
+        next();
+    } else {
+        res.status(401).json({
+            "message": "Unauthorized"
+        });
+    }
+}
